@@ -66,7 +66,6 @@ const OpenChannelReportAMessageUserChannel = (props) => {
 
   const onError = (error) => {
     updateState({ ...state, error: error.message });
-    console.log(error);
   };
 
   const handleJoinChannel = async (channelUrl) => {
@@ -245,10 +244,7 @@ const OpenChannelReportAMessageUserChannel = (props) => {
             messageInputValue: '',
           });
         })
-        .onFailed((error) => {
-          console.log(error);
-          console.log('failed');
-        });
+        .onFailed((error) => {});
     }
   };
 
@@ -268,10 +264,7 @@ const OpenChannelReportAMessageUserChannel = (props) => {
             file: null,
           });
         })
-        .onFailed((error) => {
-          console.log(error);
-          console.log('failed');
-        });
+        .onFailed((error) => {});
     }
   };
 
@@ -298,9 +291,7 @@ const OpenChannelReportAMessageUserChannel = (props) => {
 
     try {
       await sendbirdChat.connect(userIdInputValue);
-    } catch (e) {
-      console.log('error', e);
-    }
+    } catch (e) {}
     await sendbirdChat.setChannelInvitationPreference(true);
 
     const userUpdateParams = {};
@@ -337,7 +328,7 @@ const OpenChannelReportAMessageUserChannel = (props) => {
     });
   };
 
-  const toggleReportModal = (obj, key) => {
+  const toggleReportModal = (obj) => {
     const { isOpenReportModal } = state;
     updateState({
       ...state,
@@ -364,6 +355,7 @@ const OpenChannelReportAMessageUserChannel = (props) => {
       reportDescriptionInputValue,
       reportObject,
     } = state;
+
     switch (target) {
       case 'Message':
         // Report a message.
@@ -373,16 +365,16 @@ const OpenChannelReportAMessageUserChannel = (props) => {
           reportDescriptionInputValue
         );
         break;
-      case 'Channel':
-        // Report a channel.
-        await reportObject.report(
+      case 'User':
+        await currentlyJoinedChannel.reportUser(
+          reportObject.sender,
           reportCategoriesInputValue,
           reportDescriptionInputValue
         );
         break;
-      case 'User':
+      case 'Channel':
+        // Report a channel.
         await reportObject.report(
-          reportObject,
           reportCategoriesInputValue,
           reportDescriptionInputValue
         );
@@ -437,9 +429,6 @@ const OpenChannelReportAMessageUserChannel = (props) => {
       </div>
     );
   }
-
-  console.log('- - - - State object very useful for debugging - - - -');
-  console.log(state);
 
   return (
     <>
