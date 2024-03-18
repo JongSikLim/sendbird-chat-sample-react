@@ -44,6 +44,11 @@ const Home = () => {
             <Link to='/open-channel'>Basic Open Channel</Link>
           </li>
           <li>
+            <Link to='/open-channel-for-no-region'>
+              Open Channel For no regions
+            </Link>
+          </li>
+          <li>
             <Link to='/group-channel'>Basic Group Channel</Link>
           </li>
           <li>

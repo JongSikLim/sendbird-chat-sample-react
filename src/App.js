@@ -62,6 +62,7 @@ import GroupChannelUserDoNotDisturbOrSnooze from './samples/GroupChannelUserDoNo
 import GroupChannelUserProfileUpdate from './samples/GroupChannelUserProfileUpdate';
 import GroupChannelUsersOnlineStatus from './samples/GroupChannelUsersOnlineStatus';
 import BasicGroupChannelForNoRegions from './samples/BasicGroupChannelForNoRegions.js';
+import BasicOpenChannelNoRegions from './samples/BasicOpenChannelForNoRegions.js';
 
 const App = () => {
   return (
@@ -71,6 +72,10 @@ const App = () => {
           <Route path='/' element={<Home />} />
           <Route path='/open-channel' element={<BasicOpenChannelSample />} />
           <Route path='/group-channel' element={<BasicGroupChannelSample />} />
+          <Route
+            path='/open-channel-for-no-region'
+            element={<BasicOpenChannelNoRegions />}
+          />
           <Route
             path='/group-channel-for-no-region'
             element={<BasicGroupChannelForNoRegions />}
