@@ -311,15 +311,11 @@ const BasicGroupChannelForNoRegions = (props) => {
       appId: appId,
       localCacheEnabled: true,
       customApiHost: `https://api-${appId}.sendbirdtest.com`,
-      customWebSocketHost: `wss://ws-${appId}.sendbirdtest.com/`,
+      customWebSocketHost: `wss://ws-${appId}.sendbirdtest.com`,
       modules: [new GroupChannelModule()],
     });
 
-    await sendbirdChat.connect(
-      userIdInputValue,
-      '1d55d95970ae4678bde747e9ae7596d3f2724c3c'
-    );
-
+    await sendbirdChat.connect(userIdInputValue);
     await sendbirdChat.setChannelInvitationPreference(true);
 
     const userUpdateParams = {};

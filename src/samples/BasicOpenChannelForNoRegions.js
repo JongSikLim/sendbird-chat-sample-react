@@ -370,14 +370,14 @@ const BasicOpenChannelNoRegions = (props) => {
     const { userNameInputValue, userIdInputValue } = state;
     const sendbirdChat = await SendbirdChat.init({
       appId: appId,
-      localCacheEnabled: true,
+      localCacheEnabled: true,      
       customApiHost: `https://api-${appId}.sendbirdtest.com`,
-      customWebSocketHost: `wss://ws-${appId}.sendbirdtest.com/`,
+      customWebSocketHost: `wss://ws-${appId}.sendbirdtest.com`,
       modules: [new OpenChannelModule()],
     });
 
     try {
-      await sendbirdChat.connect(userIdInputValue);
+      await sendbirdChat.connect(userIdInputValue, '0e420e00b759db3d54748c3ee5ff2d18b2858dbd');
     } catch (e) {
       console.log('error', e);
     }
